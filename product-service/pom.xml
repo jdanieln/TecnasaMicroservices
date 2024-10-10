@@ -22,7 +22,26 @@
         <java.version>17</java.version> <!-- Usa Java 17 -->
     </properties>
 
+	<dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.springframework.cloud</groupId>
+	            <artifactId>spring-cloud-dependencies</artifactId>
+	            <version>2022.0.3</version> <!-- Versión Hoxton compatible con Spring Boot 3.x -->
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+
     <dependencies>
+    
+        <!-- Spring Cloud Netflix Eureka Client para registrar en Eureka -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
         <!-- Spring Boot Starter Web (para construir APIs RESTful) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,6 +73,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        
     </dependencies>
 
     <build>

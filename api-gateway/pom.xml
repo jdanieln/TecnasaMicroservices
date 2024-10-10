@@ -21,13 +21,13 @@
         <java.version>17</java.version>
     </properties>
 
-    <!-- Aquí incluimos la versión del Spring Cloud BOM -->
+    <!-- Spring Cloud BOM para gestionar versiones -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2022.0.3</version> <!-- Versión de Spring Cloud compatible con Spring Boot 3.x -->
+                <version>2022.0.3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -35,19 +35,13 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Spring Boot Starter Web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!-- Spring Cloud Gateway -->
+        <!-- Spring Cloud Gateway para enrutar tráfico -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <!-- Spring Cloud Netflix Eureka Client -->
+        <!-- Spring Cloud Netflix Eureka Client para registrar en Eureka -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

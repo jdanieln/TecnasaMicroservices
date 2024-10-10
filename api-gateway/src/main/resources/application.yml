@@ -1,0 +1,30 @@
+server:
+  port: 8080  # Puerto en el que corre el API Gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # URL de Eureka Server
+
+spring:
+  application:
+    name: API-GATEWAY  # Nombre del servicio en Eureka
+
+  cloud:
+    gateway:
+      routes:
+        - id: product-service-route
+          uri: lb://PRODUCT-SERVICE  # Ruta hacia product-service
+          predicates:
+            - Path=/products/**  # Todas las solicitudes a /products/ serán redirigidas a product-service
+
+        - id: inventory-service-route
+          uri: lb://INVENTORY-SERVICE  # Ruta hacia inventory-service
+          predicates:
+            - Path=/inventory/**  # Todas las solicitudes a /inventory/ serán redirigidas a inventory-service
+
+logging:
+  level:
+    jdbc: OFF
+    jdbc.sqltiming: DEBUG
+    jdbc.resultsettable: DEBUG

@@ -10,6 +10,7 @@
 
     <name>eureka-server</name>
 
+    <!-- Spring Boot Parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -21,13 +22,13 @@
         <java.version>17</java.version>
     </properties>
 
-    <!-- Aquí incluimos la versión del Spring Cloud BOM -->
+    <!-- Spring Cloud BOM para gestionar versiones de Spring Cloud -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2022.0.3</version> <!-- Versión de Spring Cloud Hoxton, compatible con Spring Boot 3.x -->
+                <version>2022.0.3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -35,7 +36,7 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Spring Boot Starter Web -->
+        <!-- Spring Boot Starter Web para construir APIs REST -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -47,7 +48,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
-        <!-- Dependencias para test -->
+        <!-- Dependencias para realizar pruebas -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -56,7 +57,16 @@
     </dependencies>
 
     <build>
+        <!-- Deshabilitar el filtrado de recursos en la carpeta src/main/resources -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering> <!-- Evitar errores por filtrado en application.properties -->
+            </resource>
+        </resources>
+
         <plugins>
+            <!-- Plugin de Spring Boot para empaquetar y ejecutar la aplicación -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
